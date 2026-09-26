@@ -1,186 +1,367 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TNUSAI</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+<title>TNUSAI</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+    font-family: Arial, sans-serif;
+    background: #000;
+    color: white;
+}
+
+body {
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(255, 200, 0, 0.18), transparent 35%),
+        radial-gradient(circle at 80% 80%, rgba(255, 180, 0, 0.12), transparent 35%),
+        #000;
+}
+
+/* MAIN PAGE */
+
+#main {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+    text-align: center;
+}
+
+h1 {
+    margin: 0 0 8px 0;
+    color: #ffd000;
+    font-size: 45px;
+    letter-spacing: 5px;
+    text-shadow: 0 0 25px rgba(255, 208, 0, 0.5);
+}
+
+.subtitle {
+    color: #888;
+    font-size: 12px;
+    letter-spacing: 4px;
+    margin-bottom: 30px;
+}
+
+.image-button {
+    width: 90%;
+    max-width: 500px;
+    border: 3px solid #ffd000;
+    border-radius: 20px;
+    padding: 4px;
+    background: #000;
+    cursor: pointer;
+    box-shadow: 0 0 35px rgba(255, 208, 0, 0.2);
+}
+
+.image-button img {
+    display: block;
+    width: 100%;
+    max-height: 60vh;
+    object-fit: contain;
+    border-radius: 14px;
+}
+
+.tap {
+    margin-top: 18px;
+    color: #ffd000;
+    font-size: 12px;
+    letter-spacing: 3px;
+}
+
+
+/* COOKIE POPUP */
+
+#cookiePopup {
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.88);
+}
+
+.popup {
+    width: 100%;
+    max-width: 400px;
+    padding: 30px 22px;
+    border-radius: 22px;
+    text-align: center;
+    background: #111;
+    border: 1px solid #ffd000;
+    box-shadow: 0 0 50px rgba(255, 208, 0, 0.2);
+}
+
+.popup-icon {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.popup h2 {
+    margin: 5px 0 12px;
+    color: white;
+}
+
+.popup p {
+    margin: 0 0 25px;
+    color: #999;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.buttons button {
+    flex: 1;
+    padding: 14px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.reject {
+    background: #151515;
+    color: white;
+    border: 1px solid #444;
+}
+
+.accept {
+    background: #ffd000;
+    color: black;
+    border: 1px solid #ffd000;
+}
+
+
+/* SECOND IMAGE */
+
+#secondScreen {
+    position: fixed;
+    z-index: 10000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: #000;
+}
+
+#secondScreen img {
+    max-width: 95%;
+    max-height: 80%;
+    object-fit: contain;
+    border-radius: 15px;
+    box-shadow: 0 0 50px rgba(255, 208, 0, 0.25);
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 1px solid #555;
+    background: #111;
+    color: white;
+    font-size: 20px;
+}
+
+.second-text {
+    margin-top: 15px;
+    color: #ffd000;
+    font-size: 11px;
+    letter-spacing: 3px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 500px) {
+
+    h1 {
+        font-size: 38px;
     }
 
-    body {
-      min-height: 100vh;
-      background:
-        radial-gradient(circle at 15% 10%, #332900 0%, transparent 35%),
-        radial-gradient(circle at 85% 90%, #241c00 0%, transparent 35%),
-        #030303;
-      color: white;
-      font-family: Arial, Helvetica, sans-serif;
-      overflow: hidden;
+    .buttons {
+        flex-direction: column;
     }
 
-    .container {
-      min-height: 100vh;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 25px;
-      text-align: center;
-    }
+}
+</style>
+</head>
 
-    .title {
-      color: #ffd000;
-      font-size: clamp(38px, 10vw, 70px);
-      font-weight: 900;
-      letter-spacing: 6px;
-      text-shadow:
-        0 0 12px rgba(255, 208, 0, 0.45),
-        0 0 35px rgba(255, 208, 0, 0.15);
-      margin-bottom: 8px;
-    }
 
-    .subtitle {
-      color: #777;
-      font-size: 12px;
-      letter-spacing: 4px;
-      margin-bottom: 35px;
-    }
+<body>
 
-    .image-card {
-      width: min(90vw, 500px);
-      padding: 5px;
-      border: none;
-      border-radius: 24px;
-      background: linear-gradient(
-        135deg,
-        #ffd000,
-        #493900,
-        #ffd000
-      );
-      box-shadow:
-        0 0 30px rgba(255, 208, 0, 0.12),
-        0 25px 70px rgba(0, 0, 0, 0.8);
-      cursor: pointer;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
+<!-- MAIN PAGE -->
 
-    .image-card:hover {
-      transform: scale(1.025);
-      box-shadow:
-        0 0 50px rgba(255, 208, 0, 0.25),
-        0 25px 80px rgba(0, 0, 0, 0.9);
-    }
+<div id="main">
 
-    .image-card:active {
-      transform: scale(0.97);
-    }
+    <h1>TNUSAI</h1>
 
-    .image-card img {
-      display: block;
-      width: 100%;
-      max-height: 65vh;
-      object-fit: contain;
-      border-radius: 19px;
-      background: #050505;
-    }
+    <div class="subtitle">
+        DIGITAL EXPERIENCE
+    </div>
 
-    .tap-text {
-      color: #ffd000;
-      font-size: 12px;
-      letter-spacing: 3px;
-      margin-top: 18px;
-      opacity: 0.75;
-    }
+    <div
+        class="image-button"
+        onclick="openSecondImage()"
+    >
 
-    /* COOKIE POPUP */
+        <img
+            src="goody.jpg"
+            alt="Goody"
+        >
 
-    .cookie-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      background: rgba(0, 0, 0, 0.85);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      transition: opacity 0.3s ease;
-    }
+    </div>
 
-    .cookie-box {
-      width: min(92vw, 430px);
-      padding: 30px;
-      text-align: center;
-      border-radius: 24px;
-      background: linear-gradient(145deg, #181818, #080808);
-      border: 1px solid rgba(255, 208, 0, 0.35);
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.85);
-      animation: popup 0.45s cubic-bezier(.2,.8,.2,1);
-    }
+    <div class="tap">
+        TAP THE IMAGE
+    </div>
 
-    @keyframes popup {
-      from {
-        opacity: 0;
-        transform: scale(0.85) translateY(25px);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-      }
-    }
+</div>
 
-    .cookie-icon {
-      width: 65px;
-      height: 65px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 18px;
-      border-radius: 50%;
-      background: rgba(255, 208, 0, 0.08);
-      border: 1px solid rgba(255, 208, 0, 0.3);
-      font-size: 30px;
-    }
 
-    .cookie-box h2 {
-      font-size: 24px;
-      margin-bottom: 12px;
-    }
+<!-- COOKIE POPUP -->
 
-    .cookie-box p {
-      color: #999;
-      font-size: 14px;
-      line-height: 1.65;
-      margin-bottom: 25px;
-    }
+<div id="cookiePopup">
 
-    .cookie-buttons {
-      display: flex;
-      gap: 12px;
-    }
+    <div class="popup">
 
-    .cookie-buttons button {
-      flex: 1;
-      padding: 14px;
-      border-radius: 12px;
-      font-size: 14px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.25s ease;
-    }
+        <div class="popup-icon">
+            🍪
+        </div>
 
-    .reject {
-      background: transparent;
-      color: #aaa;
-      border: 1px solid #333;
-    }
+        <h2>
+            Cookie Preferences
+        </h2>
 
-    .reject:hover {
-      background: #191919
+        <p>
+            Choose whether you want to accept or reject
+            this website's cookie preferences.
+        </p>
+
+        <div class="buttons">
+
+            <button
+                class="reject"
+                onclick="closePopup()"
+            >
+                Reject
+            </button>
+
+            <button
+                class="accept"
+                onclick="closePopup()"
+            >
+                Accept
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- SECOND IMAGE -->
+
+<div id="secondScreen">
+
+    <button
+        class="close"
+        onclick="closeSecondImage()"
+    >
+        ✕
+    </button>
+
+    <img
+        src="molanamudi.jpg"
+        alt="Molana Mudi"
+    >
+
+    <div class="second-text">
+        ENJOY THE EXPERIENCE
+    </div>
+
+</div>
+
+
+<!-- SOUND -->
+
+<audio id="sound">
+    <source
+        src="johnpork.mp3"
+        type="audio/mpeg"
+    >
+</audio>
+
+
+<script>
+
+function closePopup() {
+
+    document.getElementById("cookiePopup").style.display = "none";
+
+}
+
+
+function openSecondImage() {
+
+    document.getElementById("secondScreen").style.display = "flex";
+
+    var sound = document.getElementById("sound");
+
+    sound.currentTime = 0;
+
+    sound.play().catch(function(error) {
+
+        console.log("Audio error:", error);
+
+    });
+
+}
+
+
+function closeSecondImage() {
+
+    document.getElementById("secondScreen").style.display = "none";
+
+    var sound = document.getElementById("sound");
+
+    sound.pause();
+
+    sound.currentTime = 0;
+
+}
+
+</script>
+
+</body>
+</html>
