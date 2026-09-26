@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TNUSAI</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 15% 10%, #332900 0%, transparent 35%),
+        radial-gradient(circle at 85% 90%, #241c00 0%, transparent 35%),
+        #030303;
+      color: white;
+      font-family: Arial, Helvetica, sans-serif;
+      overflow: hidden;
+    }
+
+    .container {
+      min-height: 100vh;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 25px;
+      text-align: center;
+    }
+
+    .title {
+      color: #ffd000;
+      font-size: clamp(38px, 10vw, 70px);
+      font-weight: 900;
+      letter-spacing: 6px;
+      text-shadow:
+        0 0 12px rgba(255, 208, 0, 0.45),
+        0 0 35px rgba(255, 208, 0, 0.15);
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      color: #777;
+      font-size: 12px;
+      letter-spacing: 4px;
+      margin-bottom: 35px;
+    }
+
+    .image-card {
+      width: min(90vw, 500px);
+      padding: 5px;
+      border: none;
+      border-radius: 24px;
+      background: linear-gradient(
+        135deg,
+        #ffd000,
+        #493900,
+        #ffd000
+      );
+      box-shadow:
+        0 0 30px rgba(255, 208, 0, 0.12),
+        0 25px 70px rgba(0, 0, 0, 0.8);
+      cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .image-card:hover {
+      transform: scale(1.025);
+      box-shadow:
+        0 0 50px rgba(255, 208, 0, 0.25),
+        0 25px 80px rgba(0, 0, 0, 0.9);
+    }
+
+    .image-card:active {
+      transform: scale(0.97);
+    }
+
+    .image-card img {
+      display: block;
+      width: 100%;
+      max-height: 65vh;
+      object-fit: contain;
+      border-radius: 19px;
+      background: #050505;
+    }
+
+    .tap-text {
+      color: #ffd000;
+      font-size: 12px;
+      letter-spacing: 3px;
+      margin-top: 18px;
+      opacity: 0.75;
+    }
+
+    /* COOKIE POPUP */
+
+    .cookie-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: opacity 0.3s ease;
+    }
+
+    .cookie-box {
+      width: min(92vw, 430px);
+      padding: 30px;
+      text-align: center;
+      border-radius: 24px;
+      background: linear-gradient(145deg, #181818, #080808);
+      border: 1px solid rgba(255, 208, 0, 0.35);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.85);
+      animation: popup 0.45s cubic-bezier(.2,.8,.2,1);
+    }
+
+    @keyframes popup {
+      from {
+        opacity: 0;
+        transform: scale(0.85) translateY(25px);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    .cookie-icon {
+      width: 65px;
+      height: 65px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 18px;
+      border-radius: 50%;
+      background: rgba(255, 208, 0, 0.08);
+      border: 1px solid rgba(255, 208, 0, 0.3);
+      font-size: 30px;
+    }
+
+    .cookie-box h2 {
+      font-size: 24px;
+      margin-bottom: 12px;
+    }
+
+    .cookie-box p {
+      color: #999;
+      font-size: 14px;
+      line-height: 1.65;
+      margin-bottom: 25px;
+    }
+
+    .cookie-buttons {
+      display: flex;
+      gap: 12px;
+    }
+
+    .cookie-buttons button {
+      flex: 1;
+      padding: 14px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    .reject {
+      background: transparent;
+      color: #aaa;
+      border: 1px solid #333;
+    }
+
+    .reject:hover {
+      background: #191919
