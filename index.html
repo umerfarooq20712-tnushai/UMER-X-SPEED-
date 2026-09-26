@@ -2,10 +2,23 @@
 <html lang="en">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>CARTOON INSIDE</title>
+<title>CARTOON INSIDE 😺</title>
+
+<meta name="description" content="Cartoon Inside — a fun interactive website.">
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N8WXMVBL5W"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N8WXMVBL5W');
+</script>
 
 <style>
 
@@ -26,206 +39,352 @@ body {
 
 body {
     min-height: 100vh;
+
     background:
         radial-gradient(
             circle at 20% 20%,
             rgba(255, 200, 0, 0.18),
             transparent 35%
         ),
+
         radial-gradient(
             circle at 80% 80%,
             rgba(255, 180, 0, 0.12),
             transparent 35%
         ),
+
         #000;
 }
 
 
-/* MAIN PAGE */
+/* =========================
+   MAIN PAGE
+========================= */
 
 #main {
+
     min-height: 100vh;
+
     display: flex;
+
     flex-direction: column;
+
     justify-content: center;
+
     align-items: center;
+
     padding: 25px;
+
     text-align: center;
 }
 
+
 h1 {
+
     margin: 0 0 8px 0;
+
     color: #ffd000;
+
     font-size: 45px;
+
     letter-spacing: 3px;
+
     text-shadow:
         0 0 25px rgba(255, 208, 0, 0.5);
 }
 
+
 .subtitle {
+
     color: #888;
+
     font-size: 12px;
+
     letter-spacing: 4px;
+
     margin-bottom: 30px;
 }
 
+
 .image-button {
+
     width: 90%;
+
     max-width: 500px;
+
     border: 3px solid #ffd000;
+
     border-radius: 20px;
+
     padding: 4px;
+
     background: #000;
+
     cursor: pointer;
+
     box-shadow:
         0 0 35px rgba(255, 208, 0, 0.2);
+
+    transition: 0.2s;
 }
 
+
+.image-button:active {
+
+    transform: scale(0.97);
+
+}
+
+
 .image-button img {
+
     display: block;
+
     width: 100%;
+
     max-height: 60vh;
+
     object-fit: contain;
+
     border-radius: 14px;
 }
 
+
 .tap {
+
     margin-top: 18px;
+
     color: #ffd000;
+
     font-size: 12px;
+
     letter-spacing: 3px;
 }
 
 
-/* COOKIE POPUP */
+/* =========================
+   COOKIE POPUP
+========================= */
 
 #cookiePopup {
+
     position: fixed;
+
     z-index: 9999;
+
     top: 0;
+
     left: 0;
+
     width: 100%;
+
     height: 100%;
+
     display: flex;
+
     justify-content: center;
+
     align-items: center;
+
     padding: 20px;
+
     background: rgba(0, 0, 0, 0.88);
 }
 
+
 .popup {
+
     width: 100%;
+
     max-width: 400px;
+
     padding: 30px 22px;
+
     border-radius: 22px;
+
     text-align: center;
+
     background: #111;
+
     border: 1px solid #ffd000;
+
     box-shadow:
         0 0 50px rgba(255, 208, 0, 0.2);
 }
 
+
 .popup-icon {
+
     font-size: 42px;
+
     margin-bottom: 10px;
 }
 
+
 .popup h2 {
+
     margin: 5px 0 12px;
+
     color: white;
 }
 
+
 .popup p {
+
     margin: 0 0 25px;
+
     color: #999;
+
     font-size: 14px;
+
     line-height: 1.5;
 }
 
+
 .buttons {
+
     display: flex;
+
     gap: 12px;
 }
 
+
 .buttons button {
+
     flex: 1;
+
     padding: 14px;
+
     border-radius: 10px;
+
     font-size: 15px;
+
     font-weight: bold;
+
     cursor: pointer;
 }
 
+
 .reject {
+
     background: #151515;
+
     color: white;
+
     border: 1px solid #444;
 }
 
+
 .accept {
+
     background: #ffd000;
+
     color: black;
+
     border: 1px solid #ffd000;
 }
 
 
-/* SECOND IMAGE */
+/* =========================
+   SECOND IMAGE SCREEN
+========================= */
 
 #secondScreen {
+
     position: fixed;
+
     z-index: 10000;
+
     top: 0;
+
     left: 0;
+
     width: 100%;
+
     height: 100%;
+
     display: none;
+
     flex-direction: column;
+
     justify-content: center;
+
     align-items: center;
+
     padding: 20px;
+
     background: #000;
 }
 
+
 #secondScreen img {
+
     max-width: 95%;
+
     max-height: 80%;
+
     object-fit: contain;
+
     border-radius: 15px;
+
     box-shadow:
         0 0 50px rgba(255, 208, 0, 0.25);
 }
 
+
 .close {
+
     position: absolute;
+
     top: 20px;
+
     right: 20px;
+
     width: 45px;
+
     height: 45px;
+
     border-radius: 50%;
+
     border: 1px solid #555;
+
     background: #111;
+
     color: white;
+
     font-size: 20px;
+
+    cursor: pointer;
 }
 
+
 .second-text {
+
     margin-top: 15px;
+
     color: #ffd000;
+
     font-size: 11px;
+
     letter-spacing: 3px;
 }
 
 
-/* MOBILE */
+/* =========================
+   MOBILE
+========================= */
 
 @media (max-width: 500px) {
 
     h1 {
+
         font-size: 36px;
+
         letter-spacing: 2px;
     }
 
     .buttons {
+
         flex-direction: column;
     }
 
@@ -239,7 +398,9 @@ h1 {
 <body>
 
 
-<!-- MAIN PAGE -->
+<!-- =========================
+     MAIN PAGE
+========================= -->
 
 <div id="main">
 
@@ -250,6 +411,7 @@ h1 {
     <div class="subtitle">
         DIGITAL EXPERIENCE
     </div>
+
 
     <div
         class="image-button"
@@ -263,6 +425,7 @@ h1 {
 
     </div>
 
+
     <div class="tap">
         TAP THE IMAGE
     </div>
@@ -270,7 +433,10 @@ h1 {
 </div>
 
 
-<!-- COOKIE POPUP -->
+
+<!-- =========================
+     COOKIE POPUP
+========================= -->
 
 <div id="cookiePopup">
 
@@ -280,14 +446,17 @@ h1 {
             🍪
         </div>
 
+
         <h2>
             Cookie Preferences
         </h2>
+
 
         <p>
             Choose whether you want to accept or reject
             this website's cookie preferences.
         </p>
+
 
         <div class="buttons">
 
@@ -297,6 +466,7 @@ h1 {
             >
                 Reject
             </button>
+
 
             <button
                 class="accept"
@@ -312,7 +482,10 @@ h1 {
 </div>
 
 
-<!-- SECOND IMAGE -->
+
+<!-- =========================
+     SECOND IMAGE
+========================= -->
 
 <div id="secondScreen">
 
@@ -323,10 +496,12 @@ h1 {
         ✕
     </button>
 
+
     <img
         src="molanamudi.jpg"
         alt="Molana Mudi"
     >
+
 
     <div class="second-text">
         ENJOY THE EXPERIENCE
@@ -335,7 +510,10 @@ h1 {
 </div>
 
 
-<!-- SOUND -->
+
+<!-- =========================
+     SOUND
+========================= -->
 
 <audio id="sound">
 
@@ -346,6 +524,11 @@ h1 {
 
 </audio>
 
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
 
 <script>
 
@@ -360,9 +543,12 @@ function openSecondImage() {
 
     document.getElementById("secondScreen").style.display = "flex";
 
+
     var sound = document.getElementById("sound");
 
+
     sound.currentTime = 0;
+
 
     sound.play().catch(function(error) {
 
@@ -377,9 +563,12 @@ function closeSecondImage() {
 
     document.getElementById("secondScreen").style.display = "none";
 
+
     var sound = document.getElementById("sound");
 
+
     sound.pause();
+
 
     sound.currentTime = 0;
 
@@ -389,4 +578,5 @@ function closeSecondImage() {
 
 
 </body>
+
 </html>
